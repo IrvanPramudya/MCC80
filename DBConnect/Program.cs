@@ -105,9 +105,10 @@ namespace DBConnect
                 int choose = Convert.ToInt32(Console.ReadLine());
                 switch (choose)
                 {
-                    //CREATE TABLE VALUE
+//----------------------------------------------------------CREATE TABLE VALUE--------------------------------------
                     case 1:
-                        if (table == "REGIONS") //-----------------------------------------------------------------
+//----------------------------------------------------------CREATE TABLE REGIONS--------------------------------------
+                        if (table == "REGIONS") 
                         {
                             while (true)
                             {
@@ -124,7 +125,8 @@ namespace DBConnect
                                 }
                             }
                         }
-                        else if (table == "COUNTRIES") //-----------------------------------------------------------------
+//----------------------------------------------------------CREATE TABLE COUNTRIES--------------------------------------
+                        else if (table == "COUNTRIES")
                         {
                             while (true)
                             {
@@ -145,7 +147,8 @@ namespace DBConnect
                                 }
                             }
                         }
-                        else if (table == "LOCATIONS") //-----------------------------------------------------------------
+//----------------------------------------------------------CREATE TABLE LOCATIONS--------------------------------------
+                        else if (table == "LOCATIONS")
                         {
                             while (true)
                             {
@@ -165,6 +168,7 @@ namespace DBConnect
                                     break;
                             }
                         }
+//----------------------------------------------------------CREATE TABLE DEPARTEMENTS--------------------------------------
                         else if (table == "DEPARTEMENTS") //-----------------------------------------------------------------
                         {
                             while (true)
@@ -181,7 +185,8 @@ namespace DBConnect
                                     break;
                             }
                         }
-                        else if (table == "EMPLOYEES") //-----------------------------------------------------------------
+//----------------------------------------------------------CREATE TABLE EMPLOYEES--------------------------------------
+                        else if (table == "EMPLOYEES")
                         {
                             while (true)
                             {
@@ -211,6 +216,7 @@ namespace DBConnect
                                     break;
                             }
                         }
+//----------------------------------------------------------CREATE TABLE JOBS--------------------------------------
                         else if (table == "JOBS") //-----------------------------------------------------------------
                         {
                             while (true)
@@ -227,6 +233,7 @@ namespace DBConnect
                                     break;
                             }
                         }
+//----------------------------------------------------------CREATE TABLE HISTORIES--------------------------------------
                         else if (table == "HISTORIES") //-----------------------------------------------------------------
                         {
                             while (true)
@@ -247,12 +254,18 @@ namespace DBConnect
                         }
                         Console.ReadLine();
                         break;
-                    //--------------------------------------------------------UPDATE TABLE VALUE
+//----------------------------------------------------------END OF CREATE TABLE VALUE--------------------------------------
+//----------------------------------------------------------UPDATE TABLE VALUE--------------------------------------
                     case 2:
-                        if(table == "REGIONS")//-----------------------------------------------------------------
+//----------------------------------------------------------UPDATE TABLE REGIONS--------------------------------------
+                        if (table == "REGIONS")
                         {
                             while (true)
                             {
+                                Console.Clear();
+                                Console.WriteLine("***********TABLE REGIONS***********");
+                                getregions();
+                                Console.WriteLine("***********************************");
                                 Console.Write("ENTER ID YOU WANNA UPDATE : ");
                                 int update_id = Convert.ToInt32(Console.ReadLine());
                                 Console.Write("\nUPDATE REGIONS NAME : ");
@@ -264,15 +277,22 @@ namespace DBConnect
                                 else
                                 {
                                     updateregion(update_id,update_region);
+                                    Console.ReadLine();
+                                    Console.Clear();
+                                    getregionbyid(update_id);
                                     break;
                                 }
                             }
                         }
-                        //table countries
-                        if(table == "COUNTRIES")//-----------------------------------------------------------------
+//----------------------------------------------------------UPDATE TABLE COUNTRIES--------------------------------------
+                        if (table == "COUNTRIES")
                         {
                             while (true)
                             {
+                                Console.Clear();
+                                Console.WriteLine("***********TABLE COUNTRIES***********");
+                                getcountries();
+                                Console.WriteLine("*************************************");
                                 Console.Write("ENTER ID YOU WANNA UPDATE : ");
                                 int update_id = Convert.ToInt32(Console.ReadLine());
                                 Console.Write("UPDATE COUNTRIES NAME : ");
@@ -286,15 +306,22 @@ namespace DBConnect
                                 else
                                 {
                                     updatecountries(update_id,update_countries,region_id);
+                                    Console.ReadLine();
+                                    Console.Clear();
+                                    getcountriesbyid(update_id);
                                     break;
                                 }
                             }
                         }
-                        //-----------------------------------------------------table countries
-                        if(table == "LOCATIONS")//-----------------------------------------------------------------
+//----------------------------------------------------------UPDATE TABLE LOCATIONS--------------------------------------
+                        if (table == "LOCATIONS")
                         {
                             while (true)
                             {
+                                Console.Clear();
+                                Console.WriteLine("***********TABLE LOCATIONS***********");
+                                getlocations();
+                                Console.WriteLine("*************************************");
                                 Console.Write("UPDATE LOCATIONS ID : ");
                                 int id = Convert.ToInt32(Console.ReadLine());
                                 Console.Write("UPDATE ADDRESS NAME : ");
@@ -308,13 +335,21 @@ namespace DBConnect
                                 Console.Write("UPDATE COUNTRY ID : ");
                                 int country_id = Convert.ToInt32(Console.ReadLine());
                                 updatelocations(id, address, postal_code, city, province, country_id);
+                                Console.ReadLine();
+                                Console.Clear() ;
+                                getlocationsbyid(id);
                                 break;
                             }
                         }
-                        if(table == "DEPARTEMENTS")//-----------------------------------------------------------------
+//----------------------------------------------------------UPDATE TABLE DEPARTEMENS--------------------------------------
+                        if (table == "DEPARTEMENTS")//-----------------------------------------------------------------
                         {
                             while (true)
                             {
+                                Console.Clear();
+                                Console.WriteLine("***********TABLE DEPARTEMENTS***********");
+                                getdepartements();
+                                Console.WriteLine("****************************************");
                                 Console.Write("UPDATE DEPARTEMENTS ID : ");
                                 int id = Convert.ToInt32(Console.ReadLine());
                                 Console.Write("UPDATE DEPARTEMENTS NAME : ");
@@ -324,13 +359,21 @@ namespace DBConnect
                                 Console.Write("UPDATE MANAGER ID : ");
                                 int managerid = Convert.ToInt32(Console.ReadLine());
                                 updatedepartements(id, name, locationid, managerid);
+                                Console.ReadLine();
+                                Console.Clear();
+                                getdepartementsbyid(id);
                                 break;
                             }
                         }
-                        if(table == "EMPLOYEES")//-----------------------------------------------------------------
+//----------------------------------------------------------UPDATE TABLE EMPLOYEES--------------------------------------
+                        if (table == "EMPLOYEES")
                         {
                             while (true)
                             {
+                                Console.Clear();
+                                Console.WriteLine("***********TABLE EMPLOYEES***********");
+                                getemployees();
+                                Console.WriteLine("*************************************");
                                 Console.Write("UPDATE EMPLOYEES ID : ");
                                 int id = Convert.ToInt32(Console.ReadLine());
                                 Console.Write("UPDATE EMPLOYEES FIRST NAME : ");
@@ -354,13 +397,21 @@ namespace DBConnect
                                 Console.Write("UPDATE EMPLOYEES DEPARTEMENT ID : ");
                                 int departementid = Convert.ToInt32(Console.ReadLine());
                                 updateemployees(id, fn, ln, email, phone, hire, salary, commision, managerid, jobid, departementid);
+                                Console.ReadLine();
+                                Console.Clear();
+                                getemployeesbyid(id);
                                 break;
                             }
                         }
-                        if(table == "HISTORIES")//-----------------------------------------------------------------
+//----------------------------------------------------------UPDATE TABLE HISTORIES--------------------------------------
+                        if (table == "HISTORIES")
                         {
                             while (true)
                             {
+                                Console.Clear();
+                                Console.WriteLine("***********TABLE HISTORIES***********");
+                                gethistories();
+                                Console.WriteLine("*************************************");
                                 Console.Write("UPDATE HISTORIES START DATE : ");
                                 DateTime start = Convert.ToDateTime(Console.ReadLine());
                                 Console.Write("UPDATE HISTORIES END DATE : ");
@@ -372,13 +423,21 @@ namespace DBConnect
                                 Console.Write("UPDATE HISTORIES DEPARTEMENT ID : ");
                                 int departementid = Convert.ToInt32(Console.ReadLine());
                                 updatehistories(start, employeeid, end, jobid, departementid);
+                                Console.ReadLine();
+                                Console.Clear();
+                                gethistoriesbyid(employeeid);
                                 break;
                             }
                         }
-                        if(table == "JOBS")//-----------------------------------------------------------------
+//----------------------------------------------------------UPDATE TABLE JOBS----------------------------------------
+                        if (table == "JOBS")
                         {
                             while (true)
                             {
+                                Console.Clear();
+                                Console.WriteLine("***********TABLE JOBS*************");
+                                getjobs();
+                                Console.WriteLine("***********************************");
                                 Console.Write("UPDATE JOBS ID : ");
                                 int id = Convert.ToInt32(Console.ReadLine());
                                 Console.Write("UPDATE JOBS TITLE : ");
@@ -388,14 +447,19 @@ namespace DBConnect
                                 Console.Write("UPDATE JOBS MAX SALARY : ");
                                 int max = Convert.ToInt32(Console.ReadLine());
                                 updatejobs(id, title, min, max);
+                                Console.ReadLine();
+                                Console.Clear();
+                                getjobsbyid(id);
                                 break;
                             }
                         }
                         Console.ReadLine();
                         break;
-                    //DELETE TABLE VALUE
+//----------------------------------------------------------END OF UPDATE TABLE--------------------------------------
+//----------------------------------------------------------DELETE TABLE VALUES--------------------------------------
                     case 3:
-                        if (table == "REGIONS")//-----------------------------------------------------------------
+//----------------------------------------------------------DELETE TABLE REGIONS--------------------------------------
+                        if (table == "REGIONS")
                         {
                             while (true)
                             {
@@ -412,7 +476,7 @@ namespace DBConnect
                                 }
                             }
                         }
-
+//----------------------------------------------------------DELETE TABLE COUNTRIES--------------------------------------
                         else if (table == "COUNTRIES")//-----------------------------------------------------------------
                         {
                             while (true)
@@ -430,6 +494,7 @@ namespace DBConnect
                                 }
                             }
                         }
+//----------------------------------------------------------DELETE TABLE LOCATIONS--------------------------------------
                         else if (table == "LOCATIONS")//-----------------------------------------------------------------
                         {
                             while (true)
@@ -447,6 +512,7 @@ namespace DBConnect
                                 }
                             }
                         }
+//----------------------------------------------------------DELETE TABLE DEPARTEMENTS--------------------------------------
                         else if (table == "DEPARTEMENTS")//-----------------------------------------------------------------
                         {
                             while (true)
@@ -464,6 +530,7 @@ namespace DBConnect
                                 }
                             }
                         }
+//----------------------------------------------------------DELETE TABLE EMPLOYEES--------------------------------------
                         else if (table == "EMPLOYEES")//-----------------------------------------------------------------
                         {
                             while (true)
@@ -481,7 +548,8 @@ namespace DBConnect
                                 }
                             }
                         }
-                        else if (table == "HISTORIES")//-----------------------------------------------------------------
+//----------------------------------------------------------DELETE TABLE HISTORIES--------------------------------------
+                        else if (table == "HISTORIES")
                         {
                             while (true)
                             {
@@ -498,7 +566,8 @@ namespace DBConnect
                                 }
                             }
                         }
-                        else if (table == "JOBS")//-----------------------------------------------------------------
+//----------------------------------------------------------DELETE TABLE JOBS--------------------------------------
+                        else if (table == "JOBS")
                         {
                             while (true)
                             {
@@ -517,9 +586,11 @@ namespace DBConnect
                         }
                         Console.ReadLine();
                         break;
-                    //GET DATA TABLE BY ID
+//----------------------------------------------------------END OF DELETE TABLE VALUES--------------------------------------
+//----------------------------------------------------------GET BY ID TABLE VALUES--------------------------------------
                     case 4:
-                        if (table == "REGIONS")//-----------------------------------------------------------------
+//----------------------------------------------------------GET BY ID TABLE REGIONS--------------------------------------
+                        if (table == "REGIONS")
                         {
                             while (true)
                             {
@@ -536,7 +607,8 @@ namespace DBConnect
                                 }
                             }
                         }
-                        if (table == "COUNTRIES")//-----------------------------------------------------------------
+//----------------------------------------------------------GET BY ID TABLE COUNTRIES--------------------------------------
+                        if (table == "COUNTRIES")
                         {
                             while (true)
                             {
@@ -553,7 +625,8 @@ namespace DBConnect
                                 }
                             }
                         }
-                        if (table == "DEPARTEMENTS")//-----------------------------------------------------------------
+//----------------------------------------------------------GET BY ID TABLE DEPARTEMENTS--------------------------------------
+                        if (table == "DEPARTEMENTS")
                         {
                             while (true)
                             {
@@ -570,7 +643,8 @@ namespace DBConnect
                                 }
                             }
                         }
-                        if (table == "LOCATIONS")//-----------------------------------------------------------------
+//----------------------------------------------------------GET BY ID TABLE LOCATIONS--------------------------------------
+                        if (table == "LOCATIONS")
                         {
                             while (true)
                             {
@@ -587,7 +661,8 @@ namespace DBConnect
                                 }
                             }
                         }
-                        if (table == "EMPLOYEES")//-----------------------------------------------------------------
+//----------------------------------------------------------GET BY ID TABLE EMPLOYEES--------------------------------------
+                        if (table == "EMPLOYEES")
                         {
                             while (true)
                             {
@@ -604,7 +679,8 @@ namespace DBConnect
                                 }
                             }
                         }
-                        if (table == "HISTORIES")//-----------------------------------------------------------------
+//----------------------------------------------------------GET BY ID TABLE HISTORIES--------------------------------------
+                        if (table == "HISTORIES")
                         {
                             while (true)
                             {
@@ -621,7 +697,8 @@ namespace DBConnect
                                 }
                             }
                         }
-                        if (table == "JOBS")//-----------------------------------------------------------------
+//----------------------------------------------------------GET BY ID TABLE JOBS--------------------------------------
+                        if (table == "JOBS")
                         {
                             while (true)
                             {
@@ -640,39 +717,47 @@ namespace DBConnect
                         }
                         Console.ReadLine();
                         break;
-                    //GET ALL DATA TABLE
+//----------------------------------------------------------END OF GET BY ID TABLE VALUES--------------------------------------
+//----------------------------------------------------------GET ALL ID TABLE VALUES--------------------------------------
                     case 5:
-                        if (table == "REGIONS")//-----------------------------------------------------------------
+//----------------------------------------------------------GET ALL ID TABLE REGIONS--------------------------------------
+                        if (table == "REGIONS")
                         {
                             getregions();
                         }
-                        else if (table == "COUNTRIES")//-----------------------------------------------------------------
+                        //----------------------------------------------------------GET ALL ID TABLE COUNTRIES--------------------------------------
+                        else if (table == "COUNTRIES")
                         {
                             getcountries();
                         }
-                        else if (table == "LOCATIONS")//-----------------------------------------------------------------
+//----------------------------------------------------------GET ALL ID TABLE LOCATIONS--------------------------------------
+                        else if (table == "LOCATIONS")
                         {
                             getlocations();
                         }
-                        else if (table == "DEPARTEMENTS")//-----------------------------------------------------------------
+//----------------------------------------------------------GET ALL ID TABLE DEPARTEMENTS--------------------------------------
+                        else if (table == "DEPARTEMENTS")
                         {
                             getdepartements();
                         }
-                        else if (table == "EMPLOYEES")//-----------------------------------------------------------------
+//----------------------------------------------------------GET ALL ID TABLE EMPLOYEES--------------------------------------
+                        else if (table == "EMPLOYEES")
                         {
                             getemployees();
                         }
-                        else if (table == "HISTORIES")//-----------------------------------------------------------------
+//----------------------------------------------------------GET ALL ID TABLE HISTORIES--------------------------------------
+                        else if (table == "HISTORIES")
                         {
                             gethistories();
                         }
-                        else if (table == "JOBS")//-----------------------------------------------------------------
+//----------------------------------------------------------GET ALL ID TABLE JOBS--------------------------------------
+                        else if (table == "JOBS")
                         {
                             getjobs();
                         }
                         Console.ReadLine();
                         break;
-                    //EXIT
+//----------------------------------------------------------BACK TO TABLE MENU--------------------------------------
                     case 6:
                         exit_menu_table = true;
                         break;
@@ -684,8 +769,8 @@ namespace DBConnect
             }
             
         }
-        //------------------------------TABLE REGIONS------------------------------------
-        //GET ALL REGIONS
+//----------------------------------------------------------TABLE REGIONS-------------------------------------------
+//----------------------------------------------------------GET ALL TABLE REGIONS-------------------------------------------
         public static void getregions()
         {
             _conn = new SqlConnection( _connectionString);
@@ -704,7 +789,10 @@ namespace DBConnect
                         Console.WriteLine("ID\t Name");
                         while (reader.Read()) 
                         {
-                            Console.WriteLine(reader.GetInt32(0)+")\t "+reader.GetString(1));
+                            Console.WriteLine(
+                                reader.GetInt32(0)+")\t "+
+                                reader.GetString(1)
+                                );
                             /*Console.WriteLine("Name\t\t = ");*/
                             /*Console.WriteLine("============================");*/
                         }
@@ -739,7 +827,7 @@ namespace DBConnect
             {
                  _conn.Close(); }
         }
-        //INSERT REGIONS
+//----------------------------------------------------------INSERT TABLE REGIONS-------------------------------------------
         public static void insertregions(string region) 
         {
             _conn = new SqlConnection( _connectionString);
@@ -780,7 +868,7 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database"); 
             }
         }
-        //UPDATE REGIONS
+//----------------------------------------------------------UPDATE TABLE REGIONS-------------------------------------------
         public static void updateregion(int id,string region) 
         {
             _conn = new SqlConnection(_connectionString);
@@ -825,7 +913,7 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //DELETE REGIONS
+//----------------------------------------------------------DELETE TABLE REGIONS-------------------------------------------
         public static void deleteregion(int id) 
         {
             _conn = new SqlConnection(_connectionString);
@@ -862,7 +950,7 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //GET REGIONS BY ID
+//----------------------------------------------------------GET REGION TABLE BY ID-------------------------------------------
         public static void getregionbyid(int id)
         {
             _conn = new SqlConnection( _connectionString);
@@ -886,7 +974,9 @@ namespace DBConnect
                     {
                         while(reader.Read())
                         {
-                            Console.WriteLine(reader.GetInt32(0) + ")\t " + reader.GetString(1));
+                            Console.WriteLine(
+                                reader.GetInt32(0) + ")\t " +
+                                reader.GetString(1));
                         }
                     }
                     else
@@ -906,10 +996,10 @@ namespace DBConnect
                 _conn.Close();
             }
         }
-        //----------------------------------------END OF TABLE REGIONS--------------------------------------
+//----------------------------------------------------------END OF TABLE REGIONS--------------------------------------
 
-        //------------------------------TABLE COUNTRIES------------------------------------
-        //GET ALL COUNTRIES
+//----------------------------------------------------------TABLE COUNTRIES-------------------------------------------
+//----------------------------------------------------------GET ALL TABLE COUNTRIES-------------------------------------------
         public static void getcountries()
         {
             _conn = new SqlConnection(_connectionString);
@@ -925,10 +1015,14 @@ namespace DBConnect
                 {
                     if (reader.HasRows)
                     {
-                        Console.WriteLine("ID\tName\t\t\tRegion ID");
+                        Console.WriteLine("ID\tName\t\tRegion ID");
                         while (reader.Read())
                         {
-                            Console.WriteLine(reader.GetValue(0) + ")\t" + reader.GetString(1)+"\t\t"+reader.GetInt32(2));
+                            Console.WriteLine(
+                                reader.GetValue(0) + ")\t(" +
+                                reader.GetString(1) + "*)\t(" +
+                                reader.GetInt32(2) + ")"
+                                );
                         }
                     }
                     else
@@ -947,7 +1041,7 @@ namespace DBConnect
                 _conn.Close();
             }
         }
-        //INSERT COUNTRIES
+//----------------------------------------------------------INSERT TABLE COUNTRIES-------------------------------------------
         public static void insertcountries(int id,string countries,int region_id)
         {
             _conn = new SqlConnection(_connectionString);
@@ -997,7 +1091,7 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //UPDATE COUNTRIES
+//----------------------------------------------------------UPDATE TABLE COUNTRIES-------------------------------------------
         public static void updatecountries(int id, string countries, int region_id)
         {
             _conn = new SqlConnection(_connectionString);
@@ -1049,7 +1143,7 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //DELETE COUNTRIES
+//----------------------------------------------------------DELETE TABLE COUNTRIES-------------------------------------------
         public static void deletecountries(int id)
         {
             _conn = new SqlConnection(_connectionString);
@@ -1086,7 +1180,7 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //GET COUNTRIES BY ID
+//----------------------------------------------------------GET TABLE COUNTRIES BY ID-------------------------------------------
         public static void getcountriesbyid(int id)
         {
             _conn = new SqlConnection(_connectionString);
@@ -1102,7 +1196,7 @@ namespace DBConnect
                 pId.Value = id;
                 pId.SqlDbType = SqlDbType.Int;
                 sqlCommand.Parameters.Add(pId);
-                Console.WriteLine("ID\t Name\t\tRegion ID");
+                Console.WriteLine("ID\tName\t\tRegion ID");
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
                 {
@@ -1110,7 +1204,11 @@ namespace DBConnect
                     {
                         while (reader.Read())
                         {
-                            Console.WriteLine(reader.GetValue(0) + ")\t" + reader.GetString(1)+"\t"+reader.GetInt32(2));
+                            Console.WriteLine(
+                                reader.GetValue(0) +")\t(" + 
+                                reader.GetString(1) +"*)\t(" + 
+                                reader.GetInt32(2) + ")"
+                                );
                         }
                     }
                     else
@@ -1130,9 +1228,9 @@ namespace DBConnect
                 _conn.Close();
             }
         }
-        //----------------------------------------END OF TABLE COUNTRIES--------------------------------------
-        //------------------------------TABLE LOCATIONS------------------------------------
-        //GET ALL LOCATIONS
+//----------------------------------------------------------END OF TABLE COUNTRIES--------------------------------------
+//----------------------------------------------------------TABLE LOCATIONS-------------------------------------------
+//----------------------------------------------------------GET ALL TABLE LOCATIONS---------------------------------------------
         public static void getlocations()
         {
             _conn = new SqlConnection(_connectionString);
@@ -1148,16 +1246,16 @@ namespace DBConnect
                 {
                     if (reader.HasRows)
                     {
-                        Console.WriteLine("ID\t\tAddress\t\t|Postal Code\t\t|City\t\t|Province\t\t|Country ID");
+                        Console.WriteLine("ID\tAddress\t\t\tPostal Code\tCity\t\tProvince\tCountry ID");
                         while (reader.Read())
                             {
                                     Console.WriteLine(
-                                    reader.GetInt32(0) 
-                                    + ")\t"+ reader.GetValue(1) 
-                                    + "|\t" + reader.GetValue(2)
-                                    + "|\t\t\t" + reader.GetString(3)
-                                    + "|\t\t" + reader.GetValue(4)
-                                    + "|\t\t" +  reader.GetValue(5)
+                                    reader.GetInt32(0)+ ")\t("
+                                    +reader.GetValue(1)+ ")\t(" 
+                                    +reader.GetValue(2)+ ")\t\t(" 
+                                    +reader.GetString(3)+ ")\t\t(" 
+                                    +reader.GetValue(4)+ ")\t(" 
+                                    +reader.GetValue(5)+")"
                                     );
                             }
                     }
@@ -1177,7 +1275,7 @@ namespace DBConnect
                 _conn.Close();
             }
         }
-        //GET LOCATIONS BY ID
+//----------------------------------------------------------GET TABLE LOCATIONS BY ID-------------------------------------------
         public static void getlocationsbyid(int id)
         {
             _conn = new SqlConnection(_connectionString);
@@ -1193,7 +1291,7 @@ namespace DBConnect
                 pId.Value = id;
                 pId.SqlDbType = SqlDbType.Int;
                 sqlCommand.Parameters.Add(pId);
-                Console.WriteLine("ID\t\tAddress\t\t|Postal Code\t\t|City\t\t|Province\t\t|Country ID");
+                Console.WriteLine("ID\tAddress\t\t\tPostal Code\tCity\t\tProvince\tCountry ID");
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
                 {
@@ -1202,12 +1300,12 @@ namespace DBConnect
                         while (reader.Read())
                         {
                             Console.WriteLine(
-                                reader.GetInt32(0)
-                                + ")\t" + reader.GetValue(1)
-                                + "|\t" + reader.GetValue(2)
-                                + "|\t\t\t" + reader.GetString(3)
-                                + "|\t\t" + reader.GetValue(4)
-                                + "|\t\t" + reader.GetValue(5)
+                                    reader.GetInt32(0) + ")\t("
+                                    + reader.GetValue(1) + ")\t("
+                                    + reader.GetValue(2) + ")\t\t("
+                                    + reader.GetString(3) + ")\t\t("
+                                    + reader.GetValue(4) + ")\t("
+                                    + reader.GetValue(5) + ")"
                                 );
                         }
                     }
@@ -1228,7 +1326,7 @@ namespace DBConnect
                 _conn.Close();
             }
         }
-        //INSERT LOCATIONS
+//----------------------------------------------------------INSERT TABLE LOCATIONS-------------------------------------------
         public static void insertlocations(
             int id, string street_address, string postal_code, 
             string city, string state_province,int country_id
@@ -1300,7 +1398,7 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //UPDATE LOCATIONS
+//----------------------------------------------------------UPDATE TABLE LOCATIONS-------------------------------------------
         public static void updatelocations(
             int id, 
             string street_address, 
@@ -1379,7 +1477,7 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //DELETE LOCATIONS
+//----------------------------------------------------------DELETE TABLE LOCATIONS-------------------------------------------
         public static void deletelocations(int id)
         {
             _conn = new SqlConnection(_connectionString);
@@ -1416,9 +1514,9 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //----------------------------------------END OF TABLE LOCATIONS--------------------------------------
-        //------------------------------TABLE DEPARTEMENTS------------------------------------
-        //GET ALL DEPARTEMENTS
+//----------------------------------------------------------END OF TABLE LOCATIONS--------------------------------------
+//----------------------------------------------------------TABLE DEPARTEMENTS------------------------------------------
+//----------------------------------------------------------GET ALL TABLE DEPARTEMENTS-------------------------------------------
         public static void getdepartements()
         {
             _conn = new SqlConnection(_connectionString);
@@ -1434,14 +1532,14 @@ namespace DBConnect
                 {
                     if (reader.HasRows)
                     {
-                        Console.WriteLine("ID\t|Name\t\t\tt|LOCATION ID\t\t|MANAGER ID");
+                        Console.WriteLine("ID\tName\t\t\tLocation ID\tManager ID");
                         while (reader.Read())
                         {
                             Console.WriteLine(
-                            reader.GetInt32(0)
-                            + ")\t|" + reader.GetString(1)
-                            + "|\t\t\t|" + reader.GetInt32(2)
-                            + "|\t\t|" + reader.GetValue(3)
+                            reader.GetInt32(0)+ ")\t(" 
+                            + reader.GetString(1)+ ")\t\t\t(" 
+                            + reader.GetInt32(2)+ ")\t\t(" 
+                            + reader.GetValue(3)+")"
                             );
                         }
                     }
@@ -1461,7 +1559,7 @@ namespace DBConnect
                 _conn.Close();
             }
         }
-        //GET DEPARTEMENTS BY ID
+//----------------------------------------------------------GET TABLE DEPARTEMENTS BY ID-------------------------------------------
         public static void getdepartementsbyid(int id)
         {
             _conn = new SqlConnection(_connectionString);
@@ -1477,7 +1575,7 @@ namespace DBConnect
                 pId.Value = id;
                 pId.SqlDbType = SqlDbType.Int;
                 sqlCommand.Parameters.Add(pId);
-                Console.WriteLine("ID\t\tName\t\t|LOCATION ID\t\t|MANAGER ID");
+                Console.WriteLine("ID\tName\t\t\tLocation ID\tManager ID");
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
                 {
@@ -1486,10 +1584,10 @@ namespace DBConnect
                         while (reader.Read())
                         {
                             Console.WriteLine(
-                                reader.GetInt32(0)
-                            + ")\t|" + reader.GetString(1)
-                            + "|\t|" + reader.GetInt32(2)
-                            + "|\t\t\t|" + reader.GetValue(3)
+                            reader.GetInt32(0) + ")\t("
+                            + reader.GetString(1) + ")\t\t\t("
+                            + reader.GetInt32(2) + ")\t\t("
+                            + reader.GetValue(3) + ")"
                                 );
                         }
                     }
@@ -1510,7 +1608,7 @@ namespace DBConnect
                 _conn.Close();
             }
         }
-        //INSERT DEPARTEMENTS
+//----------------------------------------------------------INSERT TABLE DEPARTEMENTS-------------------------------------------
         public static void insertdepartements(
             int id, string name, int location_id,int manager_id
             )
@@ -1569,7 +1667,7 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //UPDATE DEPARTEMENTS
+//----------------------------------------------------------UPDATE TABLE DEPARTEMENTS-------------------------------------------
         public static void updatedepartements(
             int id, string name, int location_id, int manager_id)
         {
@@ -1631,7 +1729,7 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //DELETE DEPARTEMENTS
+//----------------------------------------------------------DELETE TABLE DEPARTEMENTS-------------------------------------------
         public static void deletedepartements(int id)
         {
             _conn = new SqlConnection(_connectionString);
@@ -1668,9 +1766,9 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //----------------------------------------END OF TABLE DEPARTEMENTS--------------------------------------
-        //------------------------------TABLE EMPLOYEES------------------------------------
-        //GET ALL EMPLOYEES
+//----------------------------------------------------------END OF TABLE DEPARTEMENTS------------------------------------------------
+//----------------------------------------------------------TABLE EMPLOYEES---------------------------------------------------
+//----------------------------------------------------------GET ALL TABLE EMPLOYEES-------------------------------------------
         public static void getemployees()
         {
             _conn = new SqlConnection(_connectionString);
@@ -1686,31 +1784,33 @@ namespace DBConnect
                 {
                     if (reader.HasRows)
                     {
-                        Console.WriteLine("ID " +
-                            "|First Name " +
-                            "|Last Name |" +
-                            "Emai |" +
-                            "Phone Number |" +
-                            "Hire Date |" +
-                            "Salary |" +
-                            "Commision |" +
-                            "Manager ID |" +
-                            "Job ID |" +
+                        Console.WriteLine(
+                            "ID " +
+                            "First Name " +
+                            "Last Name " +
+                            "Emai " +
+                            "Phone Number " +
+                            "Hire Date " +
+                            "Salary " +
+                            "Commision " +
+                            "Manager ID " +
+                            "Job ID " +
                             "Departement ID");
                         while (reader.Read())
                         {
                             Console.WriteLine(
                             reader.GetInt32(0)
-                            + ") |" + reader.GetValue(1)
-                            + " |" + reader.GetValue(2)
-                            + " |" + reader.GetValue(3)
-                            + " |" + reader.GetValue(4)
-                            + " |" + reader.GetValue(5)
-                            + " |" + reader.GetValue(6)
-                            + " |" + reader.GetValue(7)
-                            + " |" + reader.GetValue(8)
-                            + " |" + reader.GetValue(9)
-                            + " |" + reader.GetValue(10)
+                            + ") (" + reader.GetString(1)
+                            + ") (" + reader.GetValue(2)
+                            + ") (" + reader.GetString(3)
+                            + ") (" + reader.GetValue(4)
+                            + ") (" + reader.GetDateTime(5)
+                            + ") (" + reader.GetValue(6)
+                            + ") (" + reader.GetValue(7)
+                            + ") (" + reader.GetValue(8)
+                            + ") (" + reader.GetValue(9)
+                            + ") (" + reader.GetInt32(10)
+                            + ")"
                             );
                         }
                     }
@@ -1730,7 +1830,7 @@ namespace DBConnect
                 _conn.Close();
             }
         }
-        //GET EMPLOYEES BY ID
+//----------------------------------------------------------GET TABLE EMPLOYEES BY ID-------------------------------------------
         public static void getemployeesbyid(int id)
         {
             _conn = new SqlConnection(_connectionString);
@@ -1746,16 +1846,17 @@ namespace DBConnect
                 pId.Value = id;
                 pId.SqlDbType = SqlDbType.Int;
                 sqlCommand.Parameters.Add(pId);
-                Console.WriteLine("ID " +
-                            "|First Name " +
-                            "|Last Name |" +
-                            "Emai |" +
-                            "Phone Number |" +
-                            "Hire Date |" +
-                            "Salary |" +
-                            "Commision |" +
-                            "Manager ID |" +
-                            "Job ID |" +
+                Console.WriteLine(
+                            "ID " +
+                            "First Name " +
+                            "Last Name " +
+                            "Emai " +
+                            "Phone Number " +
+                            "Hire Date " +
+                            "Salary " +
+                            "Commision " +
+                            "Manager ID " +
+                            "Job ID " +
                             "Departement ID");
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
@@ -1766,16 +1867,17 @@ namespace DBConnect
                         {
                             Console.WriteLine(
                             reader.GetInt32(0)
-                            + ")\t|" + reader.GetValue(1)
-                            + "|\t|" + reader.GetValue(2)
-                            + "|\t|" + reader.GetValue(3)
-                            + "|\t|" + reader.GetValue(4)
-                            + "|\t|" + reader.GetValue(5)
-                            + "|\t|" + reader.GetValue(6)
-                            + "|\t|" + reader.GetValue(7)
-                            + "|\t|" + reader.GetValue(8)
-                            + "|\t|" + reader.GetValue(9)
-                            + "|\t|" + reader.GetValue(10)
+                            + ") (" + reader.GetString(1)
+                            + ") (" + reader.GetValue(2)
+                            + ") (" + reader.GetString(3)
+                            + ") (" + reader.GetValue(4)
+                            + ") (" + reader.GetDateTime(5)
+                            + ") (" + reader.GetValue(6)
+                            + ") (" + reader.GetValue(7)
+                            + ") (" + reader.GetValue(8)
+                            + ") (" + reader.GetValue(9)
+                            + ") (" + reader.GetInt32(10)
+                            + ")"
                             );
                         }
                     }
@@ -1796,7 +1898,7 @@ namespace DBConnect
                 _conn.Close();
             }
         }
-        //INSERT EMPLOYEES
+//----------------------------------------------------------INSERT TABLE EMPLOYEES-------------------------------------------
         public static void insertemployees(
             int id, 
             string fn, 
@@ -1907,7 +2009,7 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //UPDATE EMPLOYEES
+//----------------------------------------------------------UPDATE TABLE EMPLOYEES-------------------------------------------
         public static void updateemployees(
             int id,
             string fn,
@@ -2023,7 +2125,7 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //DELETE EMPLOYEES
+//----------------------------------------------------------DELETE TABLE EMPLOYEES-------------------------------------------
         public static void deleteemployees(int id)
         {
             _conn = new SqlConnection(_connectionString);
@@ -2060,9 +2162,9 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //----------------------------------------END OF TABLE EMPLOYEES--------------------------------------
-        //------------------------------TABLE HISTORIES------------------------------------
-        //GET ALL HISTORIES
+//----------------------------------------------------------END OF TABLE EMPLOYEES--------------------------------------
+//----------------------------------------------------------TABLE HISTORIES-----------------------------------------------------
+//----------------------------------------------------------GET ALL TABLE HISTORIES-------------------------------------------
         public static void gethistories()
         {
             _conn = new SqlConnection(_connectionString);
@@ -2078,20 +2180,22 @@ namespace DBConnect
                 {
                     if (reader.HasRows)
                     {
-                        Console.WriteLine("Start Date " +
-                            "\t\t|Employee ID |" +
-                            "\t|End Date |" +
-                            "\t\t|Departement ID |" +
-                            "|Job ID |"
+                        Console.WriteLine(
+                            "Start Date " +
+                            "\t\tEmployee ID " +
+                            "\tEnd Date " +
+                            "\t\tDepartement ID " +
+                            "Job ID "
                             );
                         while (reader.Read())
                         {
                             Console.WriteLine(
                             reader.GetValue(0)
-                            + ") \t|" + reader.GetValue(1)
-                            + "\t\t|" + reader.GetValue(2)
-                            + "\t|" + reader.GetValue(3)
-                            + "\t\t|" + reader.GetValue(4)
+                            + ") \t(" + reader.GetValue(1)
+                            + ")\t\t(" + reader.GetValue(2)
+                            + ")\t(" + reader.GetValue(3)
+                            + ")\t\t(" + reader.GetValue(4)
+                            +")"
                             );
                         }
                     }
@@ -2111,7 +2215,7 @@ namespace DBConnect
                 _conn.Close();
             }
         }
-        //GET HISTORIES BY ID
+//----------------------------------------------------------GET TABLE HISTORIES BY ID-------------------------------------------
         public static void gethistoriesbyid(int id)
         {
             _conn = new SqlConnection(_connectionString);
@@ -2127,11 +2231,12 @@ namespace DBConnect
                 pId.Value = id;
                 pId.SqlDbType = SqlDbType.Int;
                 sqlCommand.Parameters.Add(pId);
-                Console.WriteLine("Start Date " +
-                            "|Employee ID " +
-                            "|End Date |" +
-                            "|Departement ID |" +
-                            "|Job ID |"
+                Console.WriteLine(
+                            "Start Date " +
+                            "\t\tEmployee ID " +
+                            "\tEnd Date " +
+                            "\t\tDepartement ID " +
+                            "Job ID "
                             );
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
@@ -2142,10 +2247,11 @@ namespace DBConnect
                         {
                             Console.WriteLine(
                             reader.GetValue(0)
-                            + ") |" + reader.GetValue(1)
-                            + " |" + reader.GetValue(2)
-                            + " |" + reader.GetValue(3)
-                            + " |" + reader.GetValue(4)
+                            + ") \t(" + reader.GetValue(1)
+                            + ")\t\t(" + reader.GetValue(2)
+                            + ")\t(" + reader.GetValue(3)
+                            + ")\t\t(" + reader.GetValue(4)
+                            + ")"
                             );
                         }
                     }
@@ -2166,7 +2272,7 @@ namespace DBConnect
                 _conn.Close();
             }
         }
-        //INSERT HISTORIES
+//----------------------------------------------------------INSERT TABLE HISTORIES-------------------------------------------
         public static void inserthistories(
             DateTime start_date,
             int employee_id,
@@ -2235,7 +2341,7 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //UPDATE HISTORIES
+//----------------------------------------------------------UPDATE TABLE HISTORIES-------------------------------------------
         public static void updatehistories(
             DateTime start_date,
             int employee_id,
@@ -2309,7 +2415,7 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //DELETE HISTORIES
+//----------------------------------------------------------DELETE TABLE HISTORIES-------------------------------------------
         public static void deletehistories(int id)
         {
             _conn = new SqlConnection(_connectionString);
@@ -2346,9 +2452,9 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //----------------------------------------END OF TABLE HISTORIES--------------------------------------
-        //------------------------------TABLE JOBS------------------------------------
-        //GET ALL JOBS
+//----------------------------------------------------------END OF TABLE HISTORIES--------------------------------------
+//----------------------------------------------------------TABLE JOBS---------------------------------------------------------
+//----------------------------------------------------------GET ALL TABLE JOBS-------------------------------------------
         public static void getjobs()
         {
             _conn = new SqlConnection(_connectionString);
@@ -2366,17 +2472,18 @@ namespace DBConnect
                     {
                         Console.WriteLine(
                             "ID " +
-                            "\t|Title |" +
-                            "\t\t|Minimal Salary |" +
-                            "\t|Maximal Salary |"
+                            "\t\tTitle " +
+                            "\t\tMinimal Salary Column " +
+                            "\tMaximal Salary Column "
                             );
                         while (reader.Read())
                         {
                             Console.WriteLine(
                             reader.GetValue(0)
-                            + ") \t|" + reader.GetValue(1)
-                            + "\t\t\t|" + reader.GetValue(2)
-                            + "\t\t|" + reader.GetValue(3)
+                            + ") \t(" + reader.GetValue(1)
+                            + ")\t\t(" + reader.GetValue(2)
+                            + ")\t\t\t(" + reader.GetValue(3)
+                            + ")"
                             );
                         }
                     }
@@ -2396,7 +2503,7 @@ namespace DBConnect
                 _conn.Close();
             }
         }
-        //GET JOBS BY ID
+//----------------------------------------------------------GET TABLE JOBS BY ID-------------------------------------------
         public static void getjobsbyid(int id)
         {
             _conn = new SqlConnection(_connectionString);
@@ -2412,10 +2519,11 @@ namespace DBConnect
                 pId.Value = id;
                 pId.SqlDbType = SqlDbType.Int;
                 sqlCommand.Parameters.Add(pId);
-                Console.WriteLine("ID " +
-                            "\t|Title |" +
-                            "\t|Minimal Salary |" +
-                            "\t|Maximal Salary |"
+                Console.WriteLine(
+                            "ID " +
+                            "\t\tTitle " +
+                            "\t\tMinimal Salary Column " +
+                            "\tMaximal Salary Column "
                             );
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
@@ -2426,15 +2534,16 @@ namespace DBConnect
                         {
                             Console.WriteLine(
                             reader.GetValue(0)
-                            + ") \t|" + reader.GetValue(1)
-                            + "\t|" + reader.GetValue(2)
-                            + "\t\t|" + reader.GetValue(3)
+                            + ") \t(" + reader.GetValue(1)
+                            + ")\t\t(" + reader.GetValue(2)
+                            + ")\t\t\t(" + reader.GetValue(3)
+                            + ")"
                             );
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Tidak ada data jobss");
+                        Console.WriteLine("Tidak ada data jobs");
                     }
                     reader.Close();
                 }
@@ -2449,7 +2558,7 @@ namespace DBConnect
                 _conn.Close();
             }
         }
-        //INSERT JOBS
+//----------------------------------------------------------INSERT TABLE JOBS-------------------------------------------
         public static void insertjobs(
             int id,
             string title,
@@ -2511,7 +2620,7 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //UPDATE JOBS
+//----------------------------------------------------------UPDATE TABLE JOBS-------------------------------------------
         public static void updatejobs(
             int id,
             string title,
@@ -2577,7 +2686,7 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //DELETE JOBS
+//----------------------------------------------------------DELETE TABLE JOBS-------------------------------------------
         public static void deletejobs(int id)
         {
             _conn = new SqlConnection(_connectionString);
@@ -2614,6 +2723,6 @@ namespace DBConnect
                 Console.WriteLine("Error Connecting to database");
             }
         }
-        //----------------------------------------END OF TABLE JOBS--------------------------------------
+//----------------------------------------------------------END OF TABLE JOBS-------------------------------------------------
     }
 }
