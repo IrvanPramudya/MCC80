@@ -1,0 +1,11 @@
+C:\Users\ASUS\source\repos\MCC80\DBConnect\obj\Debug\DBConnect.csproj.AssemblyReference.cache
+C:\Users\ASUS\source\repos\MCC80\DBConnect\obj\Debug\DBConnect.csproj.SuggestedBindingRedirects.cache
+C:\Users\ASUS\source\repos\MCC80\DBConnect\obj\Debug\DBConnect.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\source\repos\MCC80\DBConnect\bin\Debug\DBConnect.exe.config
+C:\Users\ASUS\source\repos\MCC80\DBConnect\bin\Debug\DBConnect.exe
+C:\Users\ASUS\source\repos\MCC80\DBConnect\bin\Debug\DBConnect.pdb
+C:\Users\ASUS\source\repos\MCC80\DBConnect\bin\Debug\System.Data.SqlClient.dll
+C:\Users\ASUS\source\repos\MCC80\DBConnect\bin\Debug\System.Data.SqlClient.xml
+C:\Users\ASUS\source\repos\MCC80\DBConnect\obj\Debug\DBConnect.csproj.CopyComplete
+C:\Users\ASUS\source\repos\MCC80\DBConnect\obj\Debug\DBConnect.exe
+C:\Users\ASUS\source\repos\MCC80\DBConnect\obj\Debug\DBConnect.pdb
