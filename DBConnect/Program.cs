@@ -211,6 +211,40 @@ namespace DBConnect
                                     break;
                             }
                         }
+                        else if (table == "JOBS") //-----------------------------------------------------------------
+                        {
+                            while (true)
+                            {
+                                Console.Write("INSERT JOBS ID : ");
+                                int id = Convert.ToInt32(Console.ReadLine());
+                                Console.Write("INSERT JOBS TITLE : ");
+                                string title = Console.ReadLine();
+                                Console.Write("INSERT JOBS MIN SALARY : ");
+                                int min = Convert.ToInt32(Console.ReadLine());
+                                Console.Write("INSERT JOBS MAX SALARY : ");
+                                int max = Convert.ToInt32(Console.ReadLine());
+                                insertjobs(id,title,min,max);
+                                    break;
+                            }
+                        }
+                        else if (table == "HISTORIES") //-----------------------------------------------------------------
+                        {
+                            while (true)
+                            {
+                                Console.Write("INSERT HISTORIES START DATE : ");
+                                DateTime start = Convert.ToDateTime(Console.ReadLine());
+                                Console.Write("INSERT HISTORIES END DATE : ");
+                                DateTime end = Convert.ToDateTime(Console.ReadLine());
+                                Console.Write("INSERT HISTORIES EMPLOYEE ID : ");
+                                int employeeid = Convert.ToInt32(Console.ReadLine());
+                                Console.Write("INSERT HISTORIES JOB ID : ");
+                                int jobid = Convert.ToInt32(Console.ReadLine());
+                                Console.Write("INSERT HISTORIES DEPARTEMENT ID : ");
+                                int departementid = Convert.ToInt32(Console.ReadLine());
+                                inserthistories(start,employeeid,end,jobid,departementid);
+                                    break;
+                            }
+                        }
                         Console.ReadLine();
                         break;
                     //--------------------------------------------------------UPDATE TABLE VALUE
@@ -323,6 +357,40 @@ namespace DBConnect
                                 break;
                             }
                         }
+                        if(table == "HISTORIES")//-----------------------------------------------------------------
+                        {
+                            while (true)
+                            {
+                                Console.Write("UPDATE HISTORIES START DATE : ");
+                                DateTime start = Convert.ToDateTime(Console.ReadLine());
+                                Console.Write("UPDATE HISTORIES END DATE : ");
+                                DateTime end = Convert.ToDateTime(Console.ReadLine());
+                                Console.Write("UPDATE HISTORIES EMPLOYEE ID : ");
+                                int employeeid = Convert.ToInt32(Console.ReadLine());
+                                Console.Write("UPDATE HISTORIES JOB ID : ");
+                                int jobid = Convert.ToInt32(Console.ReadLine());
+                                Console.Write("UPDATE HISTORIES DEPARTEMENT ID : ");
+                                int departementid = Convert.ToInt32(Console.ReadLine());
+                                updatehistories(start, employeeid, end, jobid, departementid);
+                                break;
+                            }
+                        }
+                        if(table == "JOBS")//-----------------------------------------------------------------
+                        {
+                            while (true)
+                            {
+                                Console.Write("UPDATE JOBS ID : ");
+                                int id = Convert.ToInt32(Console.ReadLine());
+                                Console.Write("UPDATE JOBS TITLE : ");
+                                string title = Console.ReadLine();
+                                Console.Write("UPDATE JOBS MIN SALARY : ");
+                                int min = Convert.ToInt32(Console.ReadLine());
+                                Console.Write("UPDATE JOBS MAX SALARY : ");
+                                int max = Convert.ToInt32(Console.ReadLine());
+                                updatejobs(id, title, min, max);
+                                break;
+                            }
+                        }
                         Console.ReadLine();
                         break;
                     //DELETE TABLE VALUE
@@ -413,6 +481,40 @@ namespace DBConnect
                                 }
                             }
                         }
+                        else if (table == "HISTORIES")//-----------------------------------------------------------------
+                        {
+                            while (true)
+                            {
+                                Console.Write("ENTER ID YOU WANNA DELETE : ");
+                                int delete_id = Convert.ToInt32(Console.ReadLine());
+                                if (delete_id <= 0 )
+                                {
+                                    Console.WriteLine("PLEASE INPUT VALID ID");
+                                }
+                                else
+                                {
+                                    deletehistories(delete_id);
+                                    break;
+                                }
+                            }
+                        }
+                        else if (table == "JOBS")//-----------------------------------------------------------------
+                        {
+                            while (true)
+                            {
+                                Console.Write("ENTER ID YOU WANNA DELETE : ");
+                                int delete_id = Convert.ToInt32(Console.ReadLine());
+                                if (delete_id <= 0 )
+                                {
+                                    Console.WriteLine("PLEASE INPUT VALID ID");
+                                }
+                                else
+                                {
+                                    deletejobs(delete_id);
+                                    break;
+                                }
+                            }
+                        }
                         Console.ReadLine();
                         break;
                     //GET DATA TABLE BY ID
@@ -497,7 +599,41 @@ namespace DBConnect
                                 }
                                 else
                                 {
-                                    getlocationsbyid(get_id);
+                                    getemployeesbyid(get_id);
+                                    break;
+                                }
+                            }
+                        }
+                        if (table == "HISTORIES")//-----------------------------------------------------------------
+                        {
+                            while (true)
+                            {
+                                Console.Write("ENTER ID YOU WANNA CHECK : ");
+                                int get_id = Convert.ToInt32(Console.ReadLine());
+                                if (get_id <= 0)
+                                {
+                                    Console.WriteLine("PLEASE INPUT VALID ID");
+                                }
+                                else
+                                {
+                                    gethistoriesbyid(get_id);
+                                    break;
+                                }
+                            }
+                        }
+                        if (table == "JOBS")//-----------------------------------------------------------------
+                        {
+                            while (true)
+                            {
+                                Console.Write("ENTER ID YOU WANNA CHECK : ");
+                                int get_id = Convert.ToInt32(Console.ReadLine());
+                                if (get_id <= 0)
+                                {
+                                    Console.WriteLine("PLEASE INPUT VALID ID");
+                                }
+                                else
+                                {
+                                    getjobsbyid(get_id);
                                     break;
                                 }
                             }
@@ -521,6 +657,18 @@ namespace DBConnect
                         else if (table == "DEPARTEMENTS")//-----------------------------------------------------------------
                         {
                             getdepartements();
+                        }
+                        else if (table == "EMPLOYEES")//-----------------------------------------------------------------
+                        {
+                            getemployees();
+                        }
+                        else if (table == "HISTORIES")//-----------------------------------------------------------------
+                        {
+                            gethistories();
+                        }
+                        else if (table == "JOBS")//-----------------------------------------------------------------
+                        {
+                            getjobs();
                         }
                         Console.ReadLine();
                         break;
@@ -1538,31 +1686,31 @@ namespace DBConnect
                 {
                     if (reader.HasRows)
                     {
-                        Console.WriteLine("ID\t" +
-                            "|First Name\t" +
-                            "|Last Name\t|" +
-                            "Email\t|" +
-                            "Phone Number\t|" +
-                            "Hire Date\t|" +
-                            "Salary\t|" +
-                            "Commision\t|" +
-                            "Manager ID\t|" +
-                            "Job ID\t|" +
+                        Console.WriteLine("ID " +
+                            "|First Name " +
+                            "|Last Name |" +
+                            "Emai |" +
+                            "Phone Number |" +
+                            "Hire Date |" +
+                            "Salary |" +
+                            "Commision |" +
+                            "Manager ID |" +
+                            "Job ID |" +
                             "Departement ID");
                         while (reader.Read())
                         {
                             Console.WriteLine(
                             reader.GetInt32(0)
-                            + ")\t|" + reader.GetString(1)
-                            + "|\t|" + reader.GetValue(2)
-                            + "|\t|" + reader.GetString(3)
-                            + "|\t|" + reader.GetValue(4)
-                            + "|\t|" + reader.GetDateTime(5)
-                            + "|\t|" + reader.GetValue(6)
-                            + "|\t|" + reader.GetValue(7)
-                            + "|\t|" + reader.GetValue(8)
-                            + "|\t|" + reader.GetInt32(9)
-                            + "|\t|" + reader.GetInt32(10)
+                            + ") |" + reader.GetValue(1)
+                            + " |" + reader.GetValue(2)
+                            + " |" + reader.GetValue(3)
+                            + " |" + reader.GetValue(4)
+                            + " |" + reader.GetValue(5)
+                            + " |" + reader.GetValue(6)
+                            + " |" + reader.GetValue(7)
+                            + " |" + reader.GetValue(8)
+                            + " |" + reader.GetValue(9)
+                            + " |" + reader.GetValue(10)
                             );
                         }
                     }
@@ -1598,16 +1746,16 @@ namespace DBConnect
                 pId.Value = id;
                 pId.SqlDbType = SqlDbType.Int;
                 sqlCommand.Parameters.Add(pId);
-                Console.WriteLine("ID\t" +
-                            "|First Name\t" +
-                            "|Last Name\t|" +
-                            "Email\t|" +
-                            "Phone Number\t|" +
-                            "Hire Date\t|" +
-                            "Salary\t|" +
-                            "Commision\t|" +
-                            "Manager ID\t|" +
-                            "Job ID\t|" +
+                Console.WriteLine("ID " +
+                            "|First Name " +
+                            "|Last Name |" +
+                            "Emai |" +
+                            "Phone Number |" +
+                            "Hire Date |" +
+                            "Salary |" +
+                            "Commision |" +
+                            "Manager ID |" +
+                            "Job ID |" +
                             "Departement ID");
 
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
@@ -1618,16 +1766,16 @@ namespace DBConnect
                         {
                             Console.WriteLine(
                             reader.GetInt32(0)
-                            + ")\t|" + reader.GetString(1)
+                            + ")\t|" + reader.GetValue(1)
                             + "|\t|" + reader.GetValue(2)
-                            + "|\t|" + reader.GetString(3)
+                            + "|\t|" + reader.GetValue(3)
                             + "|\t|" + reader.GetValue(4)
-                            + "|\t|" + reader.GetDateTime(5)
+                            + "|\t|" + reader.GetValue(5)
                             + "|\t|" + reader.GetValue(6)
                             + "|\t|" + reader.GetValue(7)
                             + "|\t|" + reader.GetValue(8)
-                            + "|\t|" + reader.GetInt32(9)
-                            + "|\t|" + reader.GetInt32(10)
+                            + "|\t|" + reader.GetValue(9)
+                            + "|\t|" + reader.GetValue(10)
                             );
                         }
                     }
@@ -1778,8 +1926,8 @@ namespace DBConnect
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.Connection = _conn;
             sqlCommand.CommandText =
-                "update employees set fn = (@fn), ln = (@ln), " +
-                "email = (@email),phone = (@phone),hire_date = (@hire),salary = (@salary),commision_pct = (@commision),manager_id = (@manager_id)," +
+                "update employees set first_name = (@fn), last_name = (@ln), " +
+                "email = (@email),phone_number = (@phone),hire_date = (@hire),salary = (@salary),comission_pct = (@commision),manager_id = (@manager_id)," +
                 "job_id = (@job_id),departement_id = (@departement_id)" +
                 "where id = (@id)";
 
@@ -1913,5 +2061,559 @@ namespace DBConnect
             }
         }
         //----------------------------------------END OF TABLE EMPLOYEES--------------------------------------
+        //------------------------------TABLE HISTORIES------------------------------------
+        //GET ALL HISTORIES
+        public static void gethistories()
+        {
+            _conn = new SqlConnection(_connectionString);
+
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = _conn;
+            sqlCommand.CommandText = "select * from histories";
+
+            try
+            {
+                _conn.Open();
+                using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        Console.WriteLine("Start Date " +
+                            "\t\t|Employee ID |" +
+                            "\t|End Date |" +
+                            "\t\t|Departement ID |" +
+                            "|Job ID |"
+                            );
+                        while (reader.Read())
+                        {
+                            Console.WriteLine(
+                            reader.GetValue(0)
+                            + ") \t|" + reader.GetValue(1)
+                            + "\t\t|" + reader.GetValue(2)
+                            + "\t|" + reader.GetValue(3)
+                            + "\t\t|" + reader.GetValue(4)
+                            );
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Tidak ada data histories");
+                    }
+                    reader.Close();
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Error Connecting to database");
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
+        //GET HISTORIES BY ID
+        public static void gethistoriesbyid(int id)
+        {
+            _conn = new SqlConnection(_connectionString);
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = _conn;
+            sqlCommand.CommandText = "select * from histories where employee_id = (@id)";
+
+            try
+            {
+                _conn.Open();
+                SqlParameter pId = new SqlParameter();
+                pId.ParameterName = "@id";
+                pId.Value = id;
+                pId.SqlDbType = SqlDbType.Int;
+                sqlCommand.Parameters.Add(pId);
+                Console.WriteLine("Start Date " +
+                            "|Employee ID " +
+                            "|End Date |" +
+                            "|Departement ID |" +
+                            "|Job ID |"
+                            );
+
+                using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Console.WriteLine(
+                            reader.GetValue(0)
+                            + ") |" + reader.GetValue(1)
+                            + " |" + reader.GetValue(2)
+                            + " |" + reader.GetValue(3)
+                            + " |" + reader.GetValue(4)
+                            );
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Tidak ada data historiess");
+                    }
+                    reader.Close();
+                }
+
+            }
+            catch
+            {
+                Console.WriteLine("Error Connecting to database");
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
+        //INSERT HISTORIES
+        public static void inserthistories(
+            DateTime start_date,
+            int employee_id,
+            DateTime end_date,
+            int departement_id,
+            int job_id
+            )
+        {
+            _conn = new SqlConnection(_connectionString);
+
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = _conn;
+            sqlCommand.CommandText = "insert into histories values " +
+                "(@start_date,@employee_id,@end_date,@departement_id,@job_id)";
+
+            _conn.Open();
+            SqlTransaction transaction = _conn.BeginTransaction();
+            sqlCommand.Transaction = transaction;
+            try
+            {
+                SqlParameter pEmployeeid = new SqlParameter();
+                pEmployeeid.ParameterName = "@employee_id";
+                pEmployeeid.SqlDbType = SqlDbType.Int;
+                pEmployeeid.Value = employee_id;
+                sqlCommand.Parameters.Add(pEmployeeid);
+
+                SqlParameter pStart = new SqlParameter();
+                pStart.ParameterName = "@start_date";
+                pStart.SqlDbType = SqlDbType.DateTime;
+                pStart.Value = start_date;
+                sqlCommand.Parameters.Add(pStart);
+
+                SqlParameter pEnd = new SqlParameter();
+                pEnd.ParameterName = "@end_date";
+                pEnd.SqlDbType = SqlDbType.DateTime;
+                pEnd.Value = end_date;
+                sqlCommand.Parameters.Add(pEnd);
+
+                SqlParameter pJobid = new SqlParameter();
+                pJobid.ParameterName = "@job_id";
+                pJobid.SqlDbType = SqlDbType.Int;
+                pJobid.Value = job_id;
+                sqlCommand.Parameters.Add(pJobid);
+
+                SqlParameter pDepartementid = new SqlParameter();
+                pDepartementid.ParameterName = "@departement_id";
+                pDepartementid.SqlDbType = SqlDbType.Int;
+                pDepartementid.Value = departement_id;
+                sqlCommand.Parameters.Add(pDepartementid);
+
+                int result = sqlCommand.ExecuteNonQuery();
+                if (result > 0)
+                {
+                    Console.WriteLine("Insert Succes");
+                }
+                else
+                {
+                    Console.WriteLine("Insert Failed");
+                }
+                transaction.Commit();
+                _conn.Close();
+            }
+            catch
+            {
+                transaction.Rollback();
+                Console.WriteLine("Error Connecting to database");
+            }
+        }
+        //UPDATE HISTORIES
+        public static void updatehistories(
+            DateTime start_date,
+            int employee_id,
+            DateTime end_date,
+            int departement_id,
+            int job_id
+            )
+        {
+            _conn = new SqlConnection(_connectionString);
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = _conn;
+            sqlCommand.CommandText =
+                "update histories set " +
+                "start_date = (@start_date),employee_id = (@employee_id),end_date = (@end_date)," +
+                "departement_id = (@departement_id),job_id = (@job_id)" +
+                "where employee_id = (@employee_id)";
+
+            _conn.Open();
+            SqlTransaction transaction = _conn.BeginTransaction();
+            sqlCommand.Transaction = transaction;
+
+            try
+            {
+                SqlParameter pEmployeeid = new SqlParameter();
+                pEmployeeid.ParameterName = "@employee_id";
+                pEmployeeid.SqlDbType = SqlDbType.Int;
+                pEmployeeid.Value = employee_id;
+                sqlCommand.Parameters.Add(pEmployeeid);
+
+                SqlParameter pStart = new SqlParameter();
+                pStart.ParameterName = "@start_date";
+                pStart.SqlDbType = SqlDbType.DateTime;
+                pStart.Value = start_date;
+                sqlCommand.Parameters.Add(pStart);
+
+                SqlParameter pEnd = new SqlParameter();
+                pEnd.ParameterName = "@end_date";
+                pEnd.SqlDbType = SqlDbType.DateTime;
+                pEnd.Value = end_date;
+                sqlCommand.Parameters.Add(pEnd);
+
+                SqlParameter pJobid = new SqlParameter();
+                pJobid.ParameterName = "@job_id";
+                pJobid.SqlDbType = SqlDbType.Int;
+                pJobid.Value = job_id;
+                sqlCommand.Parameters.Add(pJobid);
+
+                SqlParameter pDepartementid = new SqlParameter();
+                pDepartementid.ParameterName = "@departement_id";
+                pDepartementid.SqlDbType = SqlDbType.Int;
+                pDepartementid.Value = departement_id;
+                sqlCommand.Parameters.Add(pDepartementid);
+
+
+                int result = sqlCommand.ExecuteNonQuery();
+                if (result > 0)
+                {
+                    Console.WriteLine("Update Success");
+                }
+                else
+                {
+                    Console.WriteLine("Update Failed");
+                }
+                transaction.Commit();
+                _conn.Close();
+
+            }
+            catch
+            {
+                transaction.Rollback();
+                Console.WriteLine("Error Connecting to database");
+            }
+        }
+        //DELETE HISTORIES
+        public static void deletehistories(int id)
+        {
+            _conn = new SqlConnection(_connectionString);
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = _conn;
+            sqlCommand.CommandText = "delete from histories where employee_id = (@id)";
+
+            _conn.Open();
+            SqlTransaction transaction = _conn.BeginTransaction();
+            sqlCommand.Transaction = transaction;
+
+            try
+            {
+                SqlParameter pId = new SqlParameter();
+                pId.ParameterName = "@id";
+                pId.Value = id;
+                pId.SqlDbType = SqlDbType.Int;
+                sqlCommand.Parameters.Add(pId);
+
+                int result = sqlCommand.ExecuteNonQuery();
+                if (result > 0)
+                {
+                    Console.WriteLine("Delete Success");
+                }
+                else
+                {
+                    Console.WriteLine("Delete Failed");
+                }
+                transaction.Commit(); _conn.Close();
+            }
+            catch
+            {
+                transaction.Rollback();
+                Console.WriteLine("Error Connecting to database");
+            }
+        }
+        //----------------------------------------END OF TABLE HISTORIES--------------------------------------
+        //------------------------------TABLE JOBS------------------------------------
+        //GET ALL JOBS
+        public static void getjobs()
+        {
+            _conn = new SqlConnection(_connectionString);
+
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = _conn;
+            sqlCommand.CommandText = "select * from jobs";
+
+            try
+            {
+                _conn.Open();
+                using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        Console.WriteLine(
+                            "ID " +
+                            "\t|Title |" +
+                            "\t\t|Minimal Salary |" +
+                            "\t|Maximal Salary |"
+                            );
+                        while (reader.Read())
+                        {
+                            Console.WriteLine(
+                            reader.GetValue(0)
+                            + ") \t|" + reader.GetValue(1)
+                            + "\t\t\t|" + reader.GetValue(2)
+                            + "\t\t|" + reader.GetValue(3)
+                            );
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Tidak ada data jobs");
+                    }
+                    reader.Close();
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Error Connecting to database");
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
+        //GET JOBS BY ID
+        public static void getjobsbyid(int id)
+        {
+            _conn = new SqlConnection(_connectionString);
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = _conn;
+            sqlCommand.CommandText = "select * from jobs where id = (@id)";
+
+            try
+            {
+                _conn.Open();
+                SqlParameter pId = new SqlParameter();
+                pId.ParameterName = "@id";
+                pId.Value = id;
+                pId.SqlDbType = SqlDbType.Int;
+                sqlCommand.Parameters.Add(pId);
+                Console.WriteLine("ID " +
+                            "\t|Title |" +
+                            "\t|Minimal Salary |" +
+                            "\t|Maximal Salary |"
+                            );
+
+                using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            Console.WriteLine(
+                            reader.GetValue(0)
+                            + ") \t|" + reader.GetValue(1)
+                            + "\t|" + reader.GetValue(2)
+                            + "\t\t|" + reader.GetValue(3)
+                            );
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Tidak ada data jobss");
+                    }
+                    reader.Close();
+                }
+
+            }
+            catch
+            {
+                Console.WriteLine("Error Connecting to database");
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
+        //INSERT JOBS
+        public static void insertjobs(
+            int id,
+            string title,
+            int min_salary,
+            int max_salary
+            )
+        {
+            _conn = new SqlConnection(_connectionString);
+
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = _conn;
+            sqlCommand.CommandText = "insert into jobs values " +
+                "(@id,@title,@min_salary,@max_salary)";
+
+            _conn.Open();
+            SqlTransaction transaction = _conn.BeginTransaction();
+            sqlCommand.Transaction = transaction;
+            try
+            {
+                SqlParameter pId = new SqlParameter();
+                pId.ParameterName = "@id";
+                pId.SqlDbType = SqlDbType.Int;
+                pId.Value = id;
+                sqlCommand.Parameters.Add(pId);
+
+                SqlParameter pTitle = new SqlParameter();
+                pTitle.ParameterName = "@title";
+                pTitle.SqlDbType = SqlDbType.VarChar;
+                pTitle.Value = title;
+                sqlCommand.Parameters.Add(pTitle);
+
+                SqlParameter pMin = new SqlParameter();
+                pMin.ParameterName = "@min_salary";
+                pMin.SqlDbType = SqlDbType.Int;
+                pMin.Value = min_salary;
+                sqlCommand.Parameters.Add(pMin);
+
+                SqlParameter pMax = new SqlParameter();
+                pMax.ParameterName = "@max_salary";
+                pMax.SqlDbType = SqlDbType.Int;
+                pMax.Value = max_salary;
+                sqlCommand.Parameters.Add(pMax);
+
+                int result = sqlCommand.ExecuteNonQuery();
+                if (result > 0)
+                {
+                    Console.WriteLine("Insert Succes");
+                }
+                else
+                {
+                    Console.WriteLine("Insert Failed");
+                }
+                transaction.Commit();
+                _conn.Close();
+            }
+            catch
+            {
+                transaction.Rollback();
+                Console.WriteLine("Error Connecting to database");
+            }
+        }
+        //UPDATE JOBS
+        public static void updatejobs(
+            int id,
+            string title,
+            int min_salary,
+            int max_salary
+            )
+        {
+            _conn = new SqlConnection(_connectionString);
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = _conn;
+            sqlCommand.CommandText =
+                "update jobs set " +
+                "title = (@title),min_salary = (@min_salary),max_salary = (@max_salary)"+
+                "where id = (@id)";
+
+            _conn.Open();
+            SqlTransaction transaction = _conn.BeginTransaction();
+            sqlCommand.Transaction = transaction;
+
+            try
+            {
+                SqlParameter pId = new SqlParameter();
+                pId.ParameterName = "@id";
+                pId.SqlDbType = SqlDbType.Int;
+                pId.Value = id;
+                sqlCommand.Parameters.Add(pId);
+
+                SqlParameter pTitle = new SqlParameter();
+                pTitle.ParameterName = "@title";
+                pTitle.SqlDbType = SqlDbType.VarChar;
+                pTitle.Value = title;
+                sqlCommand.Parameters.Add(pTitle);
+
+                SqlParameter pMin = new SqlParameter();
+                pMin.ParameterName = "@min_salary";
+                pMin.SqlDbType = SqlDbType.Int;
+                pMin.Value = min_salary;
+                sqlCommand.Parameters.Add(pMin);
+
+                SqlParameter pMax = new SqlParameter();
+                pMax.ParameterName = "@max_salary";
+                pMax.SqlDbType = SqlDbType.Int;
+                pMax.Value = max_salary;
+                sqlCommand.Parameters.Add(pMax);
+
+
+                int result = sqlCommand.ExecuteNonQuery();
+                if (result > 0)
+                {
+                    Console.WriteLine("Update Success");
+                }
+                else
+                {
+                    Console.WriteLine("Update Failed");
+                }
+                transaction.Commit();
+                _conn.Close();
+
+            }
+            catch
+            {
+                transaction.Rollback();
+                Console.WriteLine("Error Connecting to database");
+            }
+        }
+        //DELETE JOBS
+        public static void deletejobs(int id)
+        {
+            _conn = new SqlConnection(_connectionString);
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.Connection = _conn;
+            sqlCommand.CommandText = "delete from jobs where id = (@id)";
+
+            _conn.Open();
+            SqlTransaction transaction = _conn.BeginTransaction();
+            sqlCommand.Transaction = transaction;
+
+            try
+            {
+                SqlParameter pId = new SqlParameter();
+                pId.ParameterName = "@id";
+                pId.Value = id;
+                pId.SqlDbType = SqlDbType.Int;
+                sqlCommand.Parameters.Add(pId);
+
+                int result = sqlCommand.ExecuteNonQuery();
+                if (result > 0)
+                {
+                    Console.WriteLine("Delete Success");
+                }
+                else
+                {
+                    Console.WriteLine("Delete Failed");
+                }
+                transaction.Commit(); _conn.Close();
+            }
+            catch
+            {
+                transaction.Rollback();
+                Console.WriteLine("Error Connecting to database");
+            }
+        }
+        //----------------------------------------END OF TABLE JOBS--------------------------------------
     }
 }
