@@ -1,0 +1,8 @@
+C:\Users\ASUS\source\repos\MCC80\MVCArchitecture\bin\Debug\MVCArchitecture.exe.config
+C:\Users\ASUS\source\repos\MCC80\MVCArchitecture\bin\Debug\MVCArchitecture.exe
+C:\Users\ASUS\source\repos\MCC80\MVCArchitecture\bin\Debug\MVCArchitecture.pdb
+C:\Users\ASUS\source\repos\MCC80\MVCArchitecture\obj\Debug\MVCArchitecture.csproj.AssemblyReference.cache
+C:\Users\ASUS\source\repos\MCC80\MVCArchitecture\obj\Debug\MVCArchitecture.csproj.SuggestedBindingRedirects.cache
+C:\Users\ASUS\source\repos\MCC80\MVCArchitecture\obj\Debug\MVCArchitecture.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\source\repos\MCC80\MVCArchitecture\obj\Debug\MVCArchitecture.exe
+C:\Users\ASUS\source\repos\MCC80\MVCArchitecture\obj\Debug\MVCArchitecture.pdb

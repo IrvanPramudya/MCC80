@@ -1024,6 +1024,7 @@ namespace DBConnect
                                 reader.GetInt32(2) + ")"
                                 );
                         }
+                        //dapat juga menggunakan (reader.getString(1)??"")
                     }
                     else
                     {
