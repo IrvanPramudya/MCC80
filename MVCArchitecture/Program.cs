@@ -46,14 +46,19 @@ namespace MVCArchitecture
                         Countrymenu();
                         break;
                     case 3:
+                        Locationmenu();
                         break;
                     case 4:
+                        Departementmenu();
                         break;
                     case 5:
+                        Employeemenu();
                         break;
                     case 6:
+                        Historymenu();
                         break;
                     case 7:
+                        Jobmenu();
                         break;
                     case 8:
                         exit = true;
@@ -111,6 +116,211 @@ namespace MVCArchitecture
             Country model = new Country();
             ViewCountry view = new ViewCountry();
             CountryController controller = new CountryController(model, view);
+
+            bool exit = false;
+            while (!exit)
+            {
+                int pilih = view.menu();
+                switch (pilih)
+                {
+                    case 1:
+                        controller.insert();
+                        pressanykey();
+                        break;
+                    case 2:
+                        controller.update();
+                        pressanykey();
+                        break;
+                    case 3:
+                        controller.delete();
+                        pressanykey();
+                        break;
+                    case 4:
+                        controller.getbyid();
+                        pressanykey();
+                        break;
+                    case 5:
+                        controller.getall();
+                        pressanykey();
+                        break;
+                    case 6:
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Input !!!");
+                        break;
+                }
+            }
+        }
+        public static void Locationmenu()
+        {
+            Location model = new Location();
+            ViewLocation view = new ViewLocation();
+            LocationController controller = new LocationController(model, view);
+
+            bool exit = false;
+            while (!exit)
+            {
+                int pilih = view.menu();
+                switch (pilih)
+                {
+                    case 1:
+                        controller.insert();
+                        pressanykey();
+                        break;
+                    case 2:
+                        controller.update();
+                        pressanykey();
+                        break;
+                    case 3:
+                        controller.delete();
+                        pressanykey();
+                        break;
+                    case 4:
+                        controller.getbyid();
+                        pressanykey();
+                        break;
+                    case 5:
+                        controller.getall();
+                        pressanykey();
+                        break;
+                    case 6:
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Input !!!");
+                        break;
+                }
+            }
+        }
+        public static void Departementmenu()
+        {
+            Departement model = new Departement();
+            ViewDepartement view = new ViewDepartement();
+            DepartementController controller = new DepartementController(model, view);
+
+            bool exit = false;
+            while (!exit)
+            {
+                int pilih = view.menu();
+                switch (pilih)
+                {
+                    case 1:
+                        controller.insert();
+                        pressanykey();
+                        break;
+                    case 2:
+                        controller.update();
+                        pressanykey();
+                        break;
+                    case 3:
+                        controller.delete();
+                        pressanykey();
+                        break;
+                    case 4:
+                        controller.getbyid();
+                        pressanykey();
+                        break;
+                    case 5:
+                        controller.getall();
+                        pressanykey();
+                        break;
+                    case 6:
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Input !!!");
+                        break;
+                }
+            }
+        }
+        public static void Employeemenu()
+        {
+            Employee model = new Employee();
+            ViewEmployee view = new ViewEmployee();
+            EmployeeController controller = new EmployeeController(model, view);
+
+            bool exit = false;
+            while (!exit)
+            {
+                int pilih = view.menu();
+                switch (pilih)
+                {
+                    case 1:
+                        controller.insert();
+                        pressanykey();
+                        break;
+                    case 2:
+                        controller.update();
+                        pressanykey();
+                        break;
+                    case 3:
+                        controller.delete();
+                        pressanykey();
+                        break;
+                    case 4:
+                        controller.getbyid();
+                        pressanykey();
+                        break;
+                    case 5:
+                        controller.getall();
+                        pressanykey();
+                        break;
+                    case 6:
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Input !!!");
+                        break;
+                }
+            }
+        }
+        public static void Historymenu()
+        {
+            History model = new History();
+            ViewHistory view = new ViewHistory();
+            HistoryController controller = new HistoryController(model, view);
+
+            bool exit = false;
+            while (!exit)
+            {
+                int pilih = view.menu();
+                switch (pilih)
+                {
+                    case 1:
+                        controller.insert();
+                        pressanykey();
+                        break;
+                    case 2:
+                        controller.update();
+                        pressanykey();
+                        break;
+                    case 3:
+                        controller.delete();
+                        pressanykey();
+                        break;
+                    case 4:
+                        controller.getbyid();
+                        pressanykey();
+                        break;
+                    case 5:
+                        controller.getall();
+                        pressanykey();
+                        break;
+                    case 6:
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Input !!!");
+                        break;
+                }
+            }
+        }
+        public static void Jobmenu()
+        {
+            Job model = new Job();
+            ViewJob view = new ViewJob();
+            JobController controller = new JobController(model, view);
 
             bool exit = false;
             while (!exit)
