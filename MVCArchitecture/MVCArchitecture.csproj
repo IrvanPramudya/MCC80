@@ -48,6 +48,7 @@
     <Compile Include="Controllers\DepartementController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\JobController.cs" />
+    <Compile Include="Controllers\LinqController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\RegionController.cs" />
     <Compile Include="Models\Country.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Views\ViewEmployee.cs" />
     <Compile Include="Views\ViewHistory.cs" />
     <Compile Include="Views\ViewJob.cs" />
+    <Compile Include="Views\ViewLinq.cs" />
     <Compile Include="Views\ViewLocation.cs" />
     <Compile Include="Views\ViewRegion.cs" />
   </ItemGroup>

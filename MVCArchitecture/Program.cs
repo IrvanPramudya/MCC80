@@ -33,7 +33,8 @@ namespace MVCArchitecture
                 Console.WriteLine("5) EMPLOYEES");
                 Console.WriteLine("6) HISTORIES");
                 Console.WriteLine("7) JOBS");
-                Console.WriteLine("8) EXIT");
+                Console.WriteLine("8) LINQ");
+                Console.WriteLine("9) EXIT");
                 Console.WriteLine("**************************");
                 Console.Write("INPUT A NUMBER : ");
                 int number = Convert.ToInt32(Console.ReadLine());
@@ -61,6 +62,9 @@ namespace MVCArchitecture
                         Jobmenu();
                         break;
                     case 8:
+                        menulinq();
+                        break;
+                    case 9:
                         exit = true;
                         break;
                     default:
@@ -356,6 +360,19 @@ namespace MVCArchitecture
                         break;
                 }
             }
+        }
+        public static void menulinq()
+        {
+            var employee = new Employee();
+            var departement = new Departement();
+            var location = new Location();
+            var country = new Country();
+            var region = new Region();
+
+            var linq = new LinqController(employee,departement, location, country, region);
+
+            linq.employeeadvance();
+            pressanykey();
         }
         public static void pressanykey() 
         {
