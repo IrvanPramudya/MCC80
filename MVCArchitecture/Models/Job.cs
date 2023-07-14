@@ -10,7 +10,7 @@ namespace MVCArchitecture.Models
 {
     internal class Job
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Title { get; set; }
         public int MinSalary { get; set; }
         public int MaxSalary { get; set; }
@@ -36,10 +36,10 @@ namespace MVCArchitecture.Models
                         {
 
                             var job = new Job();
-                            job.Id = reader.GetInt32(0);
+                            job.Id = reader.GetString(0);
                             job.Title = reader.GetString(1);
-                            job.MinSalary = reader.GetInt32(2);
-                            job.MaxSalary = reader.GetInt32(3);
+                            job.MinSalary = reader.IsDBNull(2) ? 0: reader.GetInt32(2);
+                            job.MaxSalary = reader.IsDBNull(3) ? 0 : reader.GetInt32(3);
 
                             jobs.Add(job);
                         }
@@ -85,7 +85,7 @@ namespace MVCArchitecture.Models
                     {
                         reader.Read();
 
-                        job.Id = reader.GetInt32(0);
+                        job.Id = reader.GetString(0);
                         job.Title = reader.GetString(1);
                         job.MinSalary = reader.GetInt32(2);
                         job.MaxSalary = reader.GetInt32(3);

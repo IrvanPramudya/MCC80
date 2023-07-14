@@ -19,7 +19,7 @@ namespace MVCArchitecture.Models
         public int Salary { get; set; }
         public decimal Comission { get; set; }
         public int ManagerId { get; set; }
-        public int JobId { get; set; }
+        public string JobId { get; set; }
         public int DepartementId { get; set; }
         //----------------------------------------------------------TABLE EMPLOYEES---------------------------------------------------
         //----------------------------------------------------------GET ALL TABLE EMPLOYEES-------------------------------------------
@@ -46,12 +46,12 @@ namespace MVCArchitecture.Models
                             employee.FirstName = reader.GetString(1);
                             employee.LastName = (reader.IsDBNull(2)?"": reader.GetString(2));
                             employee.Email = reader.GetString(3);
-                            employee.Phone = reader.GetString(4);
+                            employee.Phone = (reader.IsDBNull(4) ? "" : reader.GetString(4));
                             employee.Hire = reader.GetDateTime(5);
                             employee.Salary = reader.GetInt32(6);
                             employee.Comission = reader.GetDecimal(7);
                             employee.ManagerId = (reader.IsDBNull(8) ? 0 : reader.GetInt32(8));
-                            employee.JobId = (reader.IsDBNull(9) ? 0 : reader.GetInt32(9));
+                            employee.JobId = (reader.IsDBNull(9) ? "" : reader.GetString(9));
                             employee.DepartementId = (reader.IsDBNull(10) ? 0 : reader.GetInt32(10));
 
                             employees.Add(employee);
@@ -99,15 +99,17 @@ namespace MVCArchitecture.Models
                         reader.Read();
 
                         employee.Id = reader.GetInt32(0);
+
+                        employee.Id = reader.GetInt32(0);
                         employee.FirstName = reader.GetString(1);
                         employee.LastName = (reader.IsDBNull(2) ? "" : reader.GetString(2));
                         employee.Email = reader.GetString(3);
-                        employee.Phone = reader.GetString(4);
+                        employee.Phone = (reader.IsDBNull(4) ? "" : reader.GetString(4));
                         employee.Hire = reader.GetDateTime(5);
                         employee.Salary = reader.GetInt32(6);
                         employee.Comission = reader.GetDecimal(7);
                         employee.ManagerId = (reader.IsDBNull(8) ? 0 : reader.GetInt32(8));
-                        employee.JobId = (reader.IsDBNull(9) ? 0 : reader.GetInt32(9));
+                        employee.JobId = (reader.IsDBNull(9) ? "" : reader.GetString(9));
                         employee.DepartementId = (reader.IsDBNull(10) ? 0 : reader.GetInt32(10));
                     }
                     reader.Close();
@@ -195,7 +197,7 @@ namespace MVCArchitecture.Models
 
                 SqlParameter pJobid = new SqlParameter();
                 pJobid.ParameterName = "@job_id";
-                pJobid.SqlDbType = SqlDbType.Int;
+                pJobid.SqlDbType = SqlDbType.VarChar;
                 pJobid.Value = employee.JobId;
                 sqlCommand.Parameters.Add(pJobid);
 
@@ -295,7 +297,7 @@ namespace MVCArchitecture.Models
 
                 SqlParameter pJobid = new SqlParameter();
                 pJobid.ParameterName = "@job_id";
-                pJobid.SqlDbType = SqlDbType.Int;
+                pJobid.SqlDbType = SqlDbType.VarChar;
                 pJobid.Value = employee.JobId;
                 sqlCommand.Parameters.Add(pJobid);
 

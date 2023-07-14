@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.SqlServer.Server;
 
 namespace MVCArchitecture.Models
 {
@@ -14,7 +15,7 @@ namespace MVCArchitecture.Models
         public DateTime End { get; set; }
         public int EmployeeId { get; set; }
         public int DepartementId { get; set; }
-        public int JobId { get; set; }
+        public string JobId { get; set; }
         //----------------------------------------------------------TABLE HISTORIES-----------------------------------------------------
         //----------------------------------------------------------GET ALL TABLE HISTORIES-------------------------------------------
         public List<History> getall()
@@ -38,9 +39,9 @@ namespace MVCArchitecture.Models
                             History history = new History();
                             history.Start = reader.GetDateTime(0);
                             history.EmployeeId = reader.GetInt32(1);
-                            history.End = reader.GetDateTime(2);
+                            history.End = reader.IsDBNull(2)? DateTime.Today : reader.GetDateTime(2);
                             history.DepartementId = reader.GetInt32(3);
-                            history.JobId = reader.GetInt32(4);
+                            history.JobId = reader.GetString(4);
 
                             histories.Add(history);
                         }
@@ -88,9 +89,9 @@ namespace MVCArchitecture.Models
 
                         history.Start = reader.GetDateTime(0);
                         history.EmployeeId = reader.GetInt32(1);
-                        history.End = reader.GetDateTime(2);
+                        history.End = reader.IsDBNull(2)? DateTime.Today : reader.GetDateTime(2);
                         history.DepartementId = reader.GetInt32(3);
-                        history.JobId = reader.GetInt32(4);
+                        history.JobId = reader.GetString(4);
                     }
                     reader.Close();
                 }
@@ -141,7 +142,7 @@ namespace MVCArchitecture.Models
 
                 SqlParameter pJobid = new SqlParameter();
                 pJobid.ParameterName = "@job_id";
-                pJobid.SqlDbType = SqlDbType.Int;
+                pJobid.SqlDbType = SqlDbType.VarChar;
                 pJobid.Value = history.JobId;
                 sqlCommand.Parameters.Add(pJobid);
 
@@ -205,7 +206,7 @@ namespace MVCArchitecture.Models
 
                 SqlParameter pJobid = new SqlParameter();
                 pJobid.ParameterName = "@job_id";
-                pJobid.SqlDbType = SqlDbType.Int;
+                pJobid.SqlDbType = SqlDbType.VarChar;
                 pJobid.Value = history.JobId;
                 sqlCommand.Parameters.Add(pJobid);
 

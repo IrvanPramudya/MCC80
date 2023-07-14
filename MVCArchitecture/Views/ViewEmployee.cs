@@ -90,7 +90,7 @@ namespace MVCArchitecture.Views
             Console.Write("Masukkan ID Manager : ");
             int managerid = Convert.ToInt32(Console.ReadLine());
             Console.Write("Masukkan ID Job : ");
-            int job = Convert.ToInt32(Console.ReadLine());
+            string job = Console.ReadLine();
             Console.Write("Masukkan ID Departemenet : ");
             int departement = Convert.ToInt32(Console.ReadLine());
 
@@ -127,7 +127,7 @@ namespace MVCArchitecture.Views
             Console.Write("Masukkan ID Manager : ");
             int managerid = Convert.ToInt32(Console.ReadLine());
             Console.Write("Masukkan ID Job : ");
-            int job = Convert.ToInt32(Console.ReadLine());
+            string job = Console.ReadLine();
             Console.Write("Masukkan ID Departemenet : ");
             int departement = Convert.ToInt32(Console.ReadLine());
 

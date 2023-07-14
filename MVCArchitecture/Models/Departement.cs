@@ -38,7 +38,7 @@ namespace MVCArchitecture.Models
                             departement.Id = reader.GetInt32(0);
                             departement.Name = reader.GetString(1);
                             departement.LocationId = reader.GetInt32(2);
-                            departement.ManagerId = reader.GetInt32(3);
+                            departement.ManagerId = reader.IsDBNull(3)? 0: reader.GetInt32(3);
 
                             departements.Add(departement);
                         }

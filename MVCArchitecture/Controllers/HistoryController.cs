@@ -26,6 +26,10 @@ namespace MVCArchitecture.Controllers
             {
                 _HistoryView.isempty();
             }
+            else
+            {
+                _HistoryView.getall(result);
+            }
         }
         public void getbyid()
         {

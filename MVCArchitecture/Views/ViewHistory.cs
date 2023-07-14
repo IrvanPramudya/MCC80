@@ -70,7 +70,7 @@ namespace MVCArchitecture.Views
             Console.Write("Masukkan Departement ID : ");
             int departement = Convert.ToInt32(Console.ReadLine());
             Console.Write("Masukkan Job ID : ");
-            int job = Convert.ToInt32(Console.ReadLine());
+            string job = Console.ReadLine(); ;
 
             return new History
             {
@@ -95,7 +95,7 @@ namespace MVCArchitecture.Views
             Console.Write("Masukkan Departement ID : ");
             int departement = Convert.ToInt32(Console.ReadLine());
             Console.Write("Masukkan Job ID : ");
-            int job = Convert.ToInt32(Console.ReadLine());
+            string job = Console.ReadLine(); ;
 
             return new History
             {

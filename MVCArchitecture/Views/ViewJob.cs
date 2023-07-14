@@ -61,7 +61,7 @@ namespace MVCArchitecture.Views
             Console.Clear();
 
             Console.Write("Masukkan Job ID : ");
-            int id = Convert.ToInt32(Console.ReadLine());
+            string id = Console.ReadLine();
             Console.Write("Masukkan Nama Pekerjaan : ");
             string job = Console.ReadLine();
             Console.Write("Masukkan Minimal Gaji : ");
@@ -81,7 +81,7 @@ namespace MVCArchitecture.Views
         {
             Console.Clear();
             Console.Write("ID yang ingin di Update : ");
-            int id = Convert.ToInt32(Console.ReadLine());
+            string id = Console.ReadLine();
             Console.Write("Masukkan Nama Pekerjaan : ");
             string job = Console.ReadLine();
             Console.Write("Masukkan Minimal Gaji : ");
