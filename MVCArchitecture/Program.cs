@@ -371,7 +371,8 @@ namespace MVCArchitecture
 
             var linq = new LinqController(employee,departement, location, country, region);
 
-            linq.employeeadvance();
+            //linq.employeeadvance();
+            linq.countemployeeperdepart();
             pressanykey();
         }
         public static void pressanykey() 
