@@ -3,41 +3,45 @@
 //Abstract Product
 public interface Iandroid
 {
-    void getdetail();
+    void getdetail(string nama, string prosesor);
 }
 
 public interface Iios
 {
-    void getdetail();
+    void getdetail(string nama, string prosesor);
 }
 //Concrete Product Android
 public class highspecandroid : Iandroid
 {
-    public void getdetail()
+    public void getdetail(string nama, string prosesor)
     {
-        Console.WriteLine("Snapdragon 8+ Gen 1");
+        Console.WriteLine("Nama HP = " +nama);
+        Console.WriteLine("Prosesor = " + prosesor);
     }
 }
 public class midspecandroid : Iandroid
 {
-    public void getdetail()
+    public void getdetail(string nama, string prosesor)
     {
-        Console.WriteLine("Snapdragon 778");
+        Console.WriteLine("Nama HP = " + nama);
+        Console.WriteLine("Prosesor = " +prosesor);
     }
 }
 //Concrete Product IOS
 public class highspecios : Iios
 {
-    public void getdetail()
+    public void getdetail(string nama, string prosesor)
     {
-        Console.WriteLine("A14 Bionic");
+        Console.WriteLine("Nama HP = " + nama);
+        Console.WriteLine("Prosesor = " + prosesor);
     }
 }
 public class midspecios : Iios
 {
-    public void getdetail()
+    public void getdetail(string nama, string prosesor)
     {
-        Console.WriteLine("A11 Bionic");
+        Console.WriteLine("Nama HP = " + nama);
+        Console.WriteLine("Prosesor = " + prosesor);
     }
 }
 //Abstract Factory
@@ -76,12 +80,12 @@ public class Program
     public static void Main()
     {
         IPhoneFactory HighspecPhone = new HighspecPhoneFactory();
-        Iios highspec = HighspecPhone.CreateIos();
-        highspec.getdetail();
-
+        Iios Iphone14Pro = HighspecPhone.CreateIos();
+        Iphone14Pro.getdetail("Iphone 14 Plus","A14 Bionic");
+        Console.WriteLine();
         IPhoneFactory Midspecphone = new MidspecPhoneFactory();
-        Iandroid midspec = Midspecphone.CreateAndroid();
-        midspec.getdetail();
+        Iandroid XiaomiX5Pro = Midspecphone.CreateAndroid();
+        XiaomiX5Pro.getdetail("Xiaomi X5 Pro","Snapdragon 778");
 
         Console.ReadLine();
     }
